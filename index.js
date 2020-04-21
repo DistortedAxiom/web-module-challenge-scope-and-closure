@@ -28,17 +28,9 @@ function processFirstItem(stringList, callback) {
  *
  * 1. What is the difference between counter1 and counter2?
  *
- * counter1 have the variable "count" defined inside its function (local variable) while counter2 have the count variable defined outside of its function (global variable)
- *
  * 2. Which of the two uses a closure? How can you tell?
  *
- * counter1 utilizes closure as the const counter1 is declared, which then will keep track of the value of "counter" everytime counter1 is called.
- *
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
- *
- * We would use counter1 if we would like to see the new iterations or if we want to make the value of "count" to be private and inaccessible from the outer scope
- * counter2 would be prefereable when we want to reference the variable "count" such as with another function, or if we want to have counter2 produce the same output
- * for each time it is called.
  *
 */
 
@@ -51,6 +43,7 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
+
 // counter2 code
 let count = 0;
 
@@ -63,13 +56,11 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(){
+function inning(/*Code Here*/){
 
-  return Math.floor(Math.random() * 3);
+    /*Code Here*/
+
 }
-
-console.log(inning())
-
 
 /* Task 3: finalScore()
 
@@ -85,42 +76,11 @@ finalScore(inning, 9) might return:
 
 */
 
-function finalScore(callback, innings){
+function finalScore(/*code Here*/){
 
-  var obj = {}
-  var homeScore = [];
-  var awayScore = [];
-
-
-  for(var x = 0; x < innings; x++) {
-    var rand = callback();
-    homeScore.push(rand);
-  }
-
-
-  for(var x = 0; x < innings; x++) {
-    var rand = callback();
-    awayScore.push(rand);
-  }
-
-  var totalHomeScore = homeScore.reduce((a,b) => {
-    return a + b;
-  }, 0)
-
-  var totalAwayScore = awayScore.reduce((a,b) => {
-    return a + b;
-  }, 0)
-
-  obj = {
-    "Home": totalHomeScore,
-    "Away": totalAwayScore,
-  }
-
-  console.log(obj);
+  /*Code Here*/
 
 }
-
-finalScore(inning, 9)
 
 /* Task 4:
 
@@ -144,70 +104,6 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function getInningScore(callback, innings) {
-
-  var homeObj = {};
-  var awayObj = {};
-
-  var homeScore = [];
-  var awayScore = [];
-
-
-  for(var x = 0; x < innings; x++) {
-    var rand = callback();
-    homeScore.push(rand);
-  }
-
-
-  for(var x = 0; x < innings; x++) {
-    var rand = callback();
-    awayScore.push(rand);
-  }
-
-
-  homeObj["Home"] = homeScore;
-  awayObj["Away"] = awayScore;
-
-  var obj = Object.assign({}, homeObj, awayObj);
-
-  return obj;
+function scoreboard(/* CODE HERE */) {
+  /* CODE HERE */
 }
-
-getInningScore(inning, 9);
-
-
-function scoreboard(callback1, callback2, innings) {
-
-  var obj = callback1(callback2, innings);
-  var result = [];
-
-  var totalHome = obj["Home"].reduce((sum, item) => {
-    return sum + item;
-  }, 0)
-
-  var totalAway = obj["Away"].reduce((sum, item) => {
-    return sum + item;
-  }, 0)
-
-  for(var x = 0; x < innings; x++) {
-    if (x == 0) {
-      result.push(`${x + 1}st inning: ${obj.Away[x]} - ${obj.Home[x]}`);
-    }
-    if (x == 1) {
-      result.push(`${x + 1}nd inning: ${obj.Away[x]} - ${obj.Home[x]}`);
-    }
-    if (x == 2) {
-      result.push(`${x + 1}rd inning: ${obj.Away[x]} - ${obj.Home[x]}`);
-    }
-    if (x != 0 && x != 1 && x != 2 ) {
-      result.push(`${x + 1}th inning: ${obj.Away[x]} - ${obj.Home[x]}`);
-    }
-  }
-
-  result.push(`Final Score: ${totalHome} - ${totalAway}`);
-
-  console.log(result)
-
-}
-
-scoreboard(getInningScore, inning, 9);

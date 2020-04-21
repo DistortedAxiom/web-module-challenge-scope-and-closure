@@ -75,7 +75,7 @@ When calling "dansRoll", the name always stay the same, which is "Dan" in this c
 
 c. What is the lexical scope of `newRoll`?
 
-"newRoll" contains the scope of its parent function (personalDice), this means that it is also able to access the parameter "name" from "personalDice" as well. This mean that even if personalDice has been initialized, it would still be able to access the "name" data.
+"newRoll" contains the scope of its parent function (personalDice), this means that it is also able to access the parameter "name" from "personalDice" as well. Even if personalDice has been initialized, it would still be able to access the "name" data.
 
 ### Task 3 - Stretch Goals
 
